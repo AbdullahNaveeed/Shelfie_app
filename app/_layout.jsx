@@ -3,7 +3,7 @@ import { Slot, Stack } from "expo-router";
 
 const _layout = () => {
   return (
-    <Stack ScreenOptions={{
+    <Stack screenOptions={{
             headerStyle:{ backgroundColor: '#ddd' },
             headerTintColor:'#333'
     }}
