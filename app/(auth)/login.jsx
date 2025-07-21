@@ -3,10 +3,12 @@ import ThemedText from "../../components/ThemedText";
 import ThemedView from "../../components/ThemedView";
 import Spacer from "../../components/Spacer";
 import { Link } from "expo-router";
-import { Colors } from "../../constants/Colors";
+import ThemedButton from "../../components/ThemedButton";
 
 const login = () => {
-  const handleSubmit = () => {};
+  const handleSubmit = () => {
+    console.log("Login button pressed");
+  };
   return (
     <ThemedView style={styles.container}>
       <Spacer />
@@ -14,12 +16,9 @@ const login = () => {
         Login to Your Account
       </ThemedText>
 
-      <Pressable
-        onPress={handleSubmit}
-        style={({ pressed }) => [styles.btn, pressed && styles.pressed]}
-      >
+      <ThemedButton onPress={handleSubmit} >
         <Text style={{ textAlign: "center", color: "#f2f2f2" }}>Login</Text>
-      </Pressable>
+      </ThemedButton>
 
       <Spacer height={100} />
       <ThemedText style={{ textAlign: "center" }}>
@@ -42,20 +41,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
+    alignItems: "center",
   },
   title: {
     fontSize: 18,
     marginBottom: 30,
     textAlign: "center",
-  },
-  btn: {
-    backgroundColor: Colors.primary,
-    padding: 15,
-    borderRadius: 5,
-    width: "40%",
-    alignSelf: "center",
-  },
-  pressed: {
-    opacity: 0.8,
   },
 });
