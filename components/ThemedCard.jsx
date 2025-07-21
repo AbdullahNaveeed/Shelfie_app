@@ -5,14 +5,17 @@ const ThemedCard = ({ style, ...props }) => {
   const colorScheme = useColorScheme();
   const theme = Colors[colorScheme] ?? Colors.light;
   return (
-    <View style={[{ backgroundColor: theme.uiBackground }, style,styles.card]} {...props} />
+    <View
+      style={[{ backgroundColor: theme.uiBackground }, style, styles.card]}
+      {...props}
+    />
   );
 };
 
 export default ThemedCard;
 const styles = StyleSheet.create({
-  card:{
+  card: {
     borderRadius: 5,
     padding: 20,
-  }
+  },
 });
