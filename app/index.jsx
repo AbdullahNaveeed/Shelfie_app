@@ -1,12 +1,24 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Alert, TouchableOpacity } from "react-native";
 import { Link } from "expo-router";
 import ThemedView from "../components/ThemedView";
 import ThemedLogo from "../components/ThemedLogo";
 import ThemedText from "../components/ThemedText";
 import Spacer from "../components/Spacer";
 import ThemedCard from "../components/ThemedCard";
+import { account } from "../lib/appwrite"; // Make sure this is correctly imported
 
 const Home = () => {
+  const sendPing = async () => {
+    try {
+      const response = await account.get();
+      console.log("Ping success:", response);
+      Alert.alert("Ping successful!", JSON.stringify(response));
+    } catch (error) {
+      console.error("Ping failed:", error.message);
+      Alert.alert("Ping failed", error.message);
+    }
+  };
+
   return (
     <ThemedView style={styles.container}>
       <ThemedLogo />
@@ -22,15 +34,20 @@ const Home = () => {
         <ThemedText>This is my first Card</ThemedText>
       </ThemedCard>
       <Spacer height={20} />
+
       <Link href="/login" style={styles.link}>
         <ThemedText>Login Page</ThemedText>
       </Link>
       <Link href="/register" style={styles.link}>
         <ThemedText>Register Page</ThemedText>
       </Link>
-       <Link href="/profile" style={styles.link}>
+      <Link href="/profile" style={styles.link}>
         <ThemedText>Profile Page</ThemedText>
       </Link>
+
+      <TouchableOpacity style={styles.button} onPress={sendPing}>
+        <ThemedText style={styles.buttonText}>Ping Appwrite</ThemedText>
+      </TouchableOpacity>
     </ThemedView>
   );
 };
@@ -54,5 +71,16 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     borderBottomWidth: 1,
     borderBottomColor: "#000",
+  },
+  button: {
+    marginTop: 30,
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    backgroundColor: "#4F46E5",
+    borderRadius: 8,
+  },
+  buttonText: {
+    color: "#fff",
+    fontWeight: "bold",
   },
 });

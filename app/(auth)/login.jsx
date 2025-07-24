@@ -1,17 +1,32 @@
-import { StyleSheet, Text } from "react-native";
+import {
+  Keyboard,
+  StyleSheet,
+  Text,
+  TouchableWithoutFeedback,
+} from "react-native";
 import ThemedText from "../../components/ThemedText";
+import { useRouter } from "expo-router";
 import ThemedView from "../../components/ThemedView";
 import Spacer from "../../components/Spacer";
 import { Link } from "expo-router";
 import ThemedButton from "../../components/ThemedButton";
 import ThemedTextInput from "../../components/ThemedTextInput";
 import { useState } from "react";
+import { useUser } from "../../hooks/useUser";
 
 const login = () => {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const handleSubmit = () => {
-    console.log("Login button pressed ", email, password);
+  const { login } = useUser();
+
+  const handleSubmit = async () => {
+    try {
+      await login(email, password);
+      router.push("/books");
+    } catch (error) {
+      console.error("Error during login in:", error);
+    }
   };
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -23,7 +38,6 @@ const login = () => {
         <ThemedTextInput
           placeholder="Email"
           style={{ width: "80%", marginBottom: 20 }}
-          keyboardType="email-address"
           onChangeText={setEmail}
           value={email}
         />
