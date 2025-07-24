@@ -5,7 +5,7 @@ import ThemedLogo from "../components/ThemedLogo";
 import ThemedText from "../components/ThemedText";
 import Spacer from "../components/Spacer";
 import ThemedCard from "../components/ThemedCard";
-import { account } from "../lib/appwrite"; // Make sure this is correctly imported
+import { account } from "../lib/appwrite"; 
 
 const Home = () => {
   const sendPing = async () => {

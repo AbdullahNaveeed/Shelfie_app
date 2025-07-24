@@ -11,18 +11,25 @@ export function UserProvider({ children }) {
       const response = await account.get();
       setUser(response);
     } catch (error) {
-      console.log("Login error:", error.message);
+      throw Error(error.message);
     }
   }
-  async function register(email, password) {
+  async function register(email, password, name) {
     try {
-      await account.create(ID.unique(), email, password);
+      await account.create(ID.unique(), email, passwor, name);
       await login(email, password);
     } catch (error) {
-      console.log(error.message);
+      throw Error(error.message);
     }
   }
-  async function logout() {}
+  async function logout() {
+    try {
+      await account.deleteSession("current");
+      setUser(null);
+    } catch (error) {
+      console.log("Logout error:", error.message);
+    }
+  }
   return (
     <UserContext.Provider value={{ user, login, register, logout }}>
       {children}
