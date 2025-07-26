@@ -1,12 +1,10 @@
 import {
-  ActivityIndicator,
   Keyboard,
   StyleSheet,
   Text,
   TouchableWithoutFeedback,
 } from "react-native";
 import ThemedText from "../../components/ThemedText";
-
 import ThemedView from "../../components/ThemedView";
 import Spacer from "../../components/Spacer";
 import { Link } from "expo-router";
@@ -15,6 +13,7 @@ import ThemedTextInput from "../../components/ThemedTextInput";
 import { useState } from "react";
 import { useUser } from "../../hooks/useUser";
 import { Colors } from "../../constants/Colors";
+import ThemedLoader from "../../components/ThemedLoader";
 
 const login = () => {
   const [email, setEmail] = useState("");
@@ -70,7 +69,7 @@ const login = () => {
           </Link>
         </ThemedText>
 
-        <ActivityIndicator size='large'  color='white'/>
+        <ThemedLoader />
       </ThemedView>
     </TouchableWithoutFeedback>
   );
