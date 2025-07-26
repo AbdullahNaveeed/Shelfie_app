@@ -9,20 +9,22 @@ const _RootLayout = () => {
   const theme = Colors[colorScheme] ?? Colors.light;
   return (
     <UserProvider>
-      <StatusBar value="auto" />
-      <Stack
-        screenOptions={{
-          headerStyle: { backgroundColor: theme.navBackground },
-          headerTintColor: theme.title,
-        }}
-      >
-        <Stack.Screen
-          name="index"
-          options={{ title: "Home", headerTitleAlign: "center" }}
-        />
-        <Stack.Screen name="(auth)" options={{ headerShown: false }} />
-        <Stack.Screen name="(dashboard)" options={{ headerShown: false }} />
-      </Stack>
+      <BookProvider>
+        <StatusBar value="auto" />
+        <Stack
+          screenOptions={{
+            headerStyle: { backgroundColor: theme.navBackground },
+            headerTintColor: theme.title,
+          }}
+        >
+          <Stack.Screen
+            name="index"
+            options={{ title: "Home", headerTitleAlign: "center" }}
+          />
+          <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+          <Stack.Screen name="(dashboard)" options={{ headerShown: false }} />
+        </Stack>
+      </BookProvider>
     </UserProvider>
     // <View style={{ flex: 1 }}>
     //   <Slot />

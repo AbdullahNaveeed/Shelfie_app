@@ -1,6 +1,8 @@
 import { createContext, useState } from "react";
 export const BookContext = createContext();
 export const BookProvider = ({ children }) => {
+  const DATABASE_ID = "6884a3590000c317632b"; 
+  const COLLECTION_ID = "6884a4470027e048591e"; 
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -30,7 +32,7 @@ export const BookProvider = ({ children }) => {
   }
   return (
     <BookContext.Provider
-      value={{ books, setBooks, loading, setLoading, error, setError }}
+      value={{ books, fetchBooks, fetchBookById, createBook, deleteBook }}
     >
       {children}
     </BookContext.Provider>
