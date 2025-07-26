@@ -4,15 +4,15 @@ import Spacer from "../../components/Spacer";
 import ThemedText from "../../components/ThemedText";
 import ThemedView from "../../components/ThemedView";
 import ThemedButton from "../../components/ThemedButton";
-import { useUser } from "../../hooks/useUser";
+import {useUser}  from "../../hooks/useUser";
 
 const Profile = () => {
-  const { logout } = useUser();
+  const { logout, user } = useUser();
 
   return (
     <ThemedView style={styles.container}>
       <ThemedText title={true} style={styles.heading}>
-        Your Email
+         {user.email ? `${user.name}\n\n${user.email}` : "Welcome to Shelfie!"}
       </ThemedText>
       <Spacer />
 

@@ -5,20 +5,9 @@ import ThemedLogo from "../components/ThemedLogo";
 import ThemedText from "../components/ThemedText";
 import Spacer from "../components/Spacer";
 import ThemedCard from "../components/ThemedCard";
-import { account } from "../lib/appwrite"; 
+
 
 const Home = () => {
-  const sendPing = async () => {
-    try {
-      const response = await account.get();
-      console.log("Ping success:", response);
-      Alert.alert("Ping successful!", JSON.stringify(response));
-    } catch (error) {
-      console.error("Ping failed:", error.message);
-      Alert.alert("Ping failed", error.message);
-    }
-  };
-
   return (
     <ThemedView style={styles.container}>
       <ThemedLogo />
@@ -44,10 +33,6 @@ const Home = () => {
       <Link href="/profile" style={styles.link}>
         <ThemedText>Profile Page</ThemedText>
       </Link>
-
-      <TouchableOpacity style={styles.button} onPress={sendPing}>
-        <ThemedText style={styles.buttonText}>Ping Appwrite</ThemedText>
-      </TouchableOpacity>
     </ThemedView>
   );
 };

@@ -1,13 +1,11 @@
 import { Stack } from "expo-router";
-
 import { StatusBar } from "expo-status-bar";
-import { useUser } from "../../hooks/useUser";
+import GuestOnly from "../../components/auth/GuestOnly";
 
 const _AuthLayout = () => {
-  const { user } = useUser();
-  console.log("User: ", user);
+  
   return (
-    <>
+    <GuestOnly>
       <StatusBar value="auto" />
       <Stack
         screenOptions={{
@@ -15,7 +13,7 @@ const _AuthLayout = () => {
           animation: "none",
         }}
       ></Stack>
-    </>
+    </GuestOnly>
     // <View style={{ flex: 1 }}>
     //   <Slot />
     //   <Text>Footer</Text>

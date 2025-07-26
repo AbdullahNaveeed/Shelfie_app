@@ -17,13 +17,14 @@ import { Colors } from "../../constants/Colors";
 const register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const { register } = useUser();
+  const { user, register } = useUser();
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const handleSubmit = async () => {
     setError(null);
     try {
       await register(email, password, name);
+      console.log("Current user:", user);
     } catch (error) {
       setError(error.message);
     }

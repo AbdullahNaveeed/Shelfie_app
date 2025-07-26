@@ -1,11 +1,12 @@
 import {
+  ActivityIndicator,
   Keyboard,
   StyleSheet,
   Text,
   TouchableWithoutFeedback,
 } from "react-native";
 import ThemedText from "../../components/ThemedText";
-import { useRouter } from "expo-router";
+
 import ThemedView from "../../components/ThemedView";
 import Spacer from "../../components/Spacer";
 import { Link } from "expo-router";
@@ -16,17 +17,16 @@ import { useUser } from "../../hooks/useUser";
 import { Colors } from "../../constants/Colors";
 
 const login = () => {
-  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
-  const { login } = useUser();
+  const { user, login } = useUser();
 
   const handleSubmit = async () => {
     setError(null);
     try {
       await login(email, password);
-      router.push("/books");
+      console.log("Current user:", user);
     } catch (error) {
       setError(error.message);
     }
@@ -69,6 +69,8 @@ const login = () => {
             </ThemedText>
           </Link>
         </ThemedText>
+
+        <ActivityIndicator size='large'  color='white'/>
       </ThemedView>
     </TouchableWithoutFeedback>
   );
