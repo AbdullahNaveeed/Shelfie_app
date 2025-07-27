@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { databases } from "../lib/appwrite";
+import { databases ,client} from "../lib/appwrite";
 import { ID, Permission, Query, Role } from "react-native-appwrite";
 import { useUser } from "../hooks/useUser";
 export const BookContext = createContext();
@@ -13,7 +13,7 @@ export const BookProvider = ({ children }) => {
       const response = await databases.listDocuments(
         DATABASE_ID,
         COLLECTION_ID,
-        [Query.equal('userId', user.$id)]
+        [Query.equal("userId", user.$id)]
       );
       setBooks(response.documents);
       console.log("Books fetched:", response.documents);
