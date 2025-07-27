@@ -3,6 +3,7 @@ import { Stack } from "expo-router";
 import { Colors } from "../constants/Colors";
 import { StatusBar } from "expo-status-bar";
 import { UserProvider } from "../contexts/UserContext";
+import { BookProvider } from "../contexts/BookContext";
 
 const _RootLayout = () => {
   const colorScheme = useColorScheme();
