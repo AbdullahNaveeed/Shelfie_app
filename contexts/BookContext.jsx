@@ -55,7 +55,7 @@ export const BookProvider = ({ children }) => {
     const channel = `databases.${DATABASE_ID}.collections.${COLLECTION_ID}.documents`;
     if (user) {
       fetchBooks();
-      unsubscribe = client.subscribe(channel, () => {
+      unsubscribe = client.subscribe(channel, (response) => {
         const { payload, events } = response;
         if (events[0].includes("create")) {
           setBooks((prevBooks) => [...prevBooks, payload]);

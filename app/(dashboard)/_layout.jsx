@@ -69,6 +69,12 @@ const _DashoboardLayout = () => {
             ),
           }}
         />
+        <Tabs.Screen
+          name="books/[id]"
+          options={{
+            href: null,
+          }}
+        />
       </Tabs>
     </UserOnly>
   );

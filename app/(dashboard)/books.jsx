@@ -6,9 +6,11 @@ import Spacer from "../../components/Spacer";
 import ThemedText from "../../components/ThemedText";
 import ThemedView from "../../components/ThemedView";
 import ThemedCard from "../../components/ThemedCard";
+import { useRouter } from "expo-router";
 
 const Books = () => {
   const { books } = useBooks();
+  const router = useRouter();
   return (
     <ThemedView style={styles.container} safe={true}>
       <Spacer />
@@ -20,13 +22,15 @@ const Books = () => {
         data={books}
         keyExtractor={(item) => item.$id}
         contentContainerStyle={styles.list}
-        renderItem={(item) => {
-          <Pressable>
-            <ThemedCard style={styles.card}>
-              <ThemedText style={styles.title}>{item.title}</ThemedText>
-              <ThemedText style={styles.author}>{item.author}</ThemedText>
-            </ThemedCard>
-          </Pressable>;
+        renderItem={({ item }) => {
+          return (
+            <Pressable onPress={() => router.push(`/books/${item.$id}`)}>
+              <ThemedCard style={styles.card}>
+                <ThemedText style={styles.title}>{item.title}</ThemedText>
+                <ThemedText style={styles.author}>{item.author}</ThemedText>
+              </ThemedCard>
+            </Pressable>
+          );
         }}
       />
     </ThemedView>
