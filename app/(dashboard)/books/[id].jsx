@@ -1,5 +1,5 @@
-import { StyleSheet } from "react-native";
-import { useLocalSearchParams } from "expo-router";
+import { StyleSheet, Text } from "react-native";
+import { useLocalSearchParams, useRouter } from "expo-router";
 
 // themed components
 import ThemedText from "../../../components/ThemedText";
@@ -14,6 +14,7 @@ const BookDetails = () => {
   const [book, setBook] = useState(null);
   const { fetchBookById } = useBooks();
   const { id } = useLocalSearchParams();
+  const router = useRouter()
   useEffect(() => {
     async function loadBook() {
       const bookData = await fetchBookById(id);
@@ -29,6 +30,15 @@ const BookDetails = () => {
       </ThemedView>
     );
   }
+  const   handleDelete = async () =>{
+    try {
+      await deleteBook(id);
+      setBook(null)
+      router.push('/books')
+    } catch (error) {
+      console.error("Error deleting book:", error);
+    }
+  }
 
   return (
     <ThemedView safe={true} style={styles.container}>
@@ -42,6 +52,9 @@ const BookDetails = () => {
 
         <ThemedText>{book.description}</ThemedText>
       </ThemedCard>
+      <ThemedButton style={styles.delete} onPress={handleDelete}>
+        <Text style={{ color: "fff", textAlign: "center" }}>Delete Book</Text>
+      </ThemedButton>
     </ThemedView>
   );
 };
@@ -59,5 +72,11 @@ const styles = StyleSheet.create({
   },
   card: {
     margin: 20,
+  },
+  delete: {
+    marginTop: 40,
+    backgroundColor: Colors.warning,
+    width: 200,
+    alignSelf: "center",
   },
 });
