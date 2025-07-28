@@ -73,6 +73,7 @@ const _DashoboardLayout = () => {
           name="books/[id]"
           options={{
             href: null,
+            
           }}
         />
       </Tabs>
