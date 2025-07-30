@@ -10,6 +10,7 @@ import Spacer from "../../../components/Spacer";
 import ThemedCard from "../../../components/ThemedCard";
 import { useEffect, useState } from "react";
 import { useBooks } from "../../../hooks/useBooks";
+import { Colors } from "../../../constants/Colors";
 const BookDetails = () => {
   const [book, setBook] = useState(null);
   const { fetchBookById } = useBooks();
