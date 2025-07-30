@@ -1,4 +1,4 @@
-//Yser context for snd all data inside all files
+//user context for snd all data inside all files
 import { createContext, useEffect, useState } from "react";
 import { account } from "../lib/appwrite";
 import { ID } from "react-native-appwrite";
