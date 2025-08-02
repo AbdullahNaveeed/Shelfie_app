@@ -10,10 +10,11 @@ import Spacer from "../../../components/Spacer";
 import ThemedCard from "../../../components/ThemedCard";
 import { useEffect, useState } from "react";
 import { useBooks } from "../../../hooks/useBooks";
+
 import { Colors } from "../../../constants/Colors";
 const BookDetails = () => {
   const [book, setBook] = useState(null);
-  const { fetchBookById } = useBooks();
+  const { fetchBookById ,deleteBook} = useBooks();
   const { id } = useLocalSearchParams();
   const router = useRouter()
   useEffect(() => {
@@ -54,7 +55,7 @@ const BookDetails = () => {
         <ThemedText>{book.description}</ThemedText>
       </ThemedCard>
       <ThemedButton style={styles.delete} onPress={handleDelete}>
-        <Text style={{ color: "fff", textAlign: "center" }}>Delete Book</Text>
+        <Text style={{ color: "#fff", textAlign: "center" }}>Delete Book</Text>
       </ThemedButton>
     </ThemedView>
   );

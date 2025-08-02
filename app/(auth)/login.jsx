@@ -1,3 +1,11 @@
+// At the start, we have three options: Login, Signup, and Profile pages.
+// If the user is not logged in and clicks on the Profile page, they are 
+// redirected to the Login page by default. This handles authentication.
+// I use Appwrite as the backend to manage login sessions with a valid email 
+// and a password of at least 8 characters.
+// Appwrite is also used to store books, delete them, and fetch a book by its
+// ID.
+
 import {
   Keyboard,
   StyleSheet,
@@ -13,7 +21,6 @@ import ThemedTextInput from "../../components/ThemedTextInput";
 import { useState } from "react";
 import { useUser } from "../../hooks/useUser";
 import { Colors } from "../../constants/Colors";
-import ThemedLoader from "../../components/ThemedLoader";
 
 const login = () => {
   const [email, setEmail] = useState("");
@@ -68,8 +75,6 @@ const login = () => {
             </ThemedText>
           </Link>
         </ThemedText>
-
-        <ThemedLoader />
       </ThemedView>
     </TouchableWithoutFeedback>
   );
