@@ -2,9 +2,8 @@
 // If the user is not logged in and clicks on the Profile page, they are 
 // redirected to the Login page by default. This handles authentication.
 // I use Appwrite as the backend to manage login sessions with a valid email 
-// and a password of at least 8 characters.
-// Appwrite is also used to store books, delete them, and fetch a book by its
-// ID.
+// and a password of at least 8 characters.Appwrite is also used to store 
+// books, delete them, and fetch a book by its ID.
 
 import {
   Keyboard,
